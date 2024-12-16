@@ -142,8 +142,8 @@ function analyze(result::BenchResult)
     min_iters = minimum([report.niters for report in task_reports])
     std_dev = std([report.niters for report in task_reports])
     percentiles = [quantile(latencies, p) for p in [0.5, 0.99]]
-    (lock=result.lock, mean_iters=mean_iters, max_iters=max_iters, min_iters=min_iters, std_dev=std_dev, sum=niters, percentiles=(0.5=>percentiles[1], 0.99=>percentiles[2]),
-    n_tasks=result.config.n_tasks, time_locked_ns=(result.config.time_locked_min, result.config.time_locked_max), time_unlocked_ns = (result.config.time_unlocked_min, result.config.time_unlocked_max), runtime_ms=result.config.runtime)
+    (lock=result.lock,n_tasks=result.config.n_tasks, mean_iters=mean_iters, max_iters=max_iters, min_iters=min_iters, std_dev=std_dev, sum=niters, percentiles=(0.5=>percentiles[1], 0.99=>percentiles[2]),
+    time_locked_ns=(result.config.time_locked_min, result.config.time_locked_max), time_unlocked_ns = (result.config.time_unlocked_min, result.config.time_unlocked_max), runtime_ms=result.config.runtime)
 end
 
 
